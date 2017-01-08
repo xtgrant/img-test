@@ -1,13 +1,16 @@
 <p>
   Start by clicking a user.
 </p>
-<div class="userlist-group" >
+<div class="user-view userlist-group" >
   <ul>
-    <li class="userlist-group-item">
-      <a routerLink="/albums" routerLinkActive="active" class="userlist-group-link">User1</a>
-    </li>
-    <li class="userlist-group-item">
-        <a routerLink="/albums" routerLinkActive="active" class="userlist-group-link">User2</a>
+    <li class="userlist-group-item"  *ngFor="let usr of users" >
+      <a [routerLink]="['/albums',usr]" routerLinkActive="active" class="userlist-group-link">{{usr.name}}</a>
     </li>
   </ul>
+</div>
+<div class="albums-view albums-group">
+  <router-outlet name="albumsRoute"></router-outlet>
+</div>
+<div class="photos-view photos-group">
+  <router-outlet name="photosRoute"></router-outlet>
 </div>

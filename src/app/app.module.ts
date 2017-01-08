@@ -4,7 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import {
+    HomeComponent,
+    AlbumComponent,
+    PhotoComponent } from './home/home.component';
 import { LostComponent } from './lost/lost.component';
 import { AppRoutingModule } from './router/routing.module';
 
@@ -12,6 +15,8 @@ import { AppRoutingModule } from './router/routing.module';
   declarations: [
     AppComponent,
     HomeComponent,
+    AlbumComponent,
+    PhotoComponent,
     LostComponent
   ],
   imports: [
