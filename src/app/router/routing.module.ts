@@ -12,7 +12,7 @@ const appRoutes: Routes = [
     path: 'home',
     component: HomeComponent,
     children: [
-      { path: 'albums', component: AlbumComponent, outlet: 'albumsRoute' },
+      { path: 'albums/:id', component: AlbumComponent, outlet: 'albumsRoute' },
       { path: 'photos', component: PhotoComponent, outlet: 'photosRoute' }
     ]
   },

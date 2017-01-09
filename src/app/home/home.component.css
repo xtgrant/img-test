@@ -1,0 +1,45 @@
+ul,li{
+  padding:0;
+  list-style:none;
+}
+a{
+  text-decoration: none;
+  display: block;
+}
+.userlist-group{
+  float: left;
+  padding-right: 20px;
+  border-right: 1px solid #3c3c3c;
+}
+.userlist-group ul{
+  overflow:auto;
+  width:200px;
+  padding-left: 20px;
+}
+.userlist-group ul li{
+  float:left;
+  width:100%;
+  list-style: none;
+  margin-bottom:10px;
+}
+.userlist-group ul li a{
+    padding: 5px 10px;
+    color: #3c3c3c;
+    border: 1px solid #3c3c3c;
+}
+.userlist-group ul li a.active{
+  color:#006dca;
+  border: 1px solid #006dca;
+}
+.albums-group{
+  float:left;
+  margin-left:20px;
+}
+.albums-group ul{
+  overflow:auto;
+  padding-left: 20px;
+}
+.albums-group ul li{
+  float:left;
+  list-style: none;
+}
