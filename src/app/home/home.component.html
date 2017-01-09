@@ -4,7 +4,7 @@
 <div class="user-view userlist-group" >
   <ul>
     <li class="userlist-group-item"  *ngFor="let usr of users" >
-      <a [routerLink]="['/home',{outlets:{'albumsRoute':['albums',usr.id]}}]" routerLinkActive="active" class="userlist-group-link">{{usr.name}}</a>
+      <a [routerLink]="['/home',{outlets:{'albumsRoute':['albums',usr.id], 'photosRoute':[]}}]" routerLinkActive="active" class="userlist-group-link">{{usr.name}}</a>
     </li>
   </ul>
 </div>

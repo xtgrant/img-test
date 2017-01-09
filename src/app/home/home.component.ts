@@ -30,13 +30,14 @@ export class HomeComponent implements OnInit {
 // albums sub outlet
 @Component({
   selector: 'albums',
+  styleUrls: ['./home.component.css'],
   template: `<h3>ALBUMS - UserId:{{userId}} | Quantity: {{albumLength}} </h3>
-  <ul>
+  <ul class="child-group-ul">
     <li class="album-group-item"  *ngFor="let album of albums" >
-      <a [routerLink]="['/home',{outlets:{'photosRoute':['photos',album.id]}}]"
+      <a [routerLink]="['/home',{outlets:{'photosRoute':['photos',{'id':userId,'albumId':album.id}]}}]"
         routerLinkActive="active" class="album-group-link">
         <img [src]=album.tmbUrl />
-        <span>{{album.title}}</span>
+        <span class="subtitle"><em>Album Title:</em> {{album.title}}</span>
         </a>
     </li>
   </ul>`
@@ -78,11 +79,7 @@ export class AlbumComponent implements OnInit {
     );
   }
   getFirstPhoto(id){
-     return this.userService.getFirstPhoto(id);
-
-  }
-  setThumbnail(thumbnail){
-    console.log(thumbnail);
+     return this.userService.getUsersPhotos(id);
   }
 
   private ngOnDestroy() {
@@ -93,6 +90,45 @@ export class AlbumComponent implements OnInit {
 // photos sub outlet
 @Component({
   selector: 'photos',
-  template: 'PHOTOS'
+  styleUrls: ['./home.component.css'],
+  template: `<h3>PHOTOS - AlbumId:{{albumId}} | UserId:{{userId}} | Quantity: {{photoLength}} </h3>
+    <ul class="child-group-ul">
+      <li class="photos-group-item"  *ngFor="let photo of photos" >
+          <div>
+          <span class="subtitle"><em>Photo Title:</em> {{photo.title}}</span>
+          <img [src]=photo.thumbnailUrl />
+          </div>
+
+      </li>
+    </ul>`
 })
-export class PhotoComponent{}
+export class PhotoComponent implements OnInit {
+  private userId;
+  private albumId;
+  private sub;
+  private photos;
+  private photoLength;
+
+  constructor(private route: ActivatedRoute, private userService: UsersService) {}
+
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.userId = params['id'];
+      this.albumId = params['albumId'];
+      let id = params['albumId'];
+
+      this.getUsersPhotos(id);
+    });
+
+  }
+  getUsersPhotos(id){
+     this.userService.getUsersPhotos(id).subscribe(
+       data=> {
+        this.photoLength = data.length;
+        this.photos = data;
+      },
+       error=> console.error('error on users'),
+       ()=> console.log('done with users')
+     );
+  }
+}

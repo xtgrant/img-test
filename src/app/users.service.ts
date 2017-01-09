@@ -23,13 +23,8 @@ export class UsersService {
                       .map((res:Response) => res.json())
                       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
-    getFirstPhoto(albumId){
-       return this.http.get(this.albumsUrl+'/'+albumId+'/photos')
-                      .map((res:Response) => res.json())
-                      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-    }
     getUsersPhotos(albumId){
-       return this.http.get('${this.albumsUrl}?albumId=${albumId}')
+       return this.http.get(this.albumsUrl+'/'+albumId+'/photos')
                       .map((res:Response) => res.json())
                       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }

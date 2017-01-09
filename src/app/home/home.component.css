@@ -31,15 +31,39 @@ a{
   color:#006dca;
   border: 1px solid #006dca;
 }
-.albums-group{
-  float:left;
-  margin-left:20px;
+.albums-group, .photos-group{
+  margin-left:250px;
 }
-.albums-group ul{
+.photos-group{
+  border-top:1px solid #3c3c3c;
+  margin-top:30px;
+}
+.child-group-ul{
   overflow:auto;
   padding-left: 20px;
 }
-.albums-group ul li{
-  float:left;
+.child-group-ul li{
   list-style: none;
+  clear: right;
+  display: inline-flex;
+  text-align: center;
+}
+.child-group-ul li a{
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 100%;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.child-group-ul li img{
+  display: block;
+  margin: 0 auto;
+}
+.child-group-ul li .subtitle{
+  display: inline-block;
+  width: 150px;
+  vertical-align: bottom;
+}
+.child-group-ul li .subtitle em{
+  text-decoration: underline;
 }
